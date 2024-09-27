@@ -1,0 +1,149 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Ticket API",
+        "description": "ATicket API service",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/events": {
+            "get": {
+                "tags": [
+                    "SellerApi"
+                ],
+                "summary": "Список мероприятий",
+                "operationId": "564c511ca2e343678c17c22380969a79",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/events/{eventId}/lists": {
+            "get": {
+                "tags": [
+                    "SellerApi"
+                ],
+                "summary": "Список событий мероприятия",
+                "description": "Get Event Lists",
+                "operationId": "595ac0a716ed96891bca52fc59a80fd9",
+                "parameters": [
+                    {
+                        "name": "eventId",
+                        "in": "path",
+                        "description": "Event id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/list/{listId}/places": {
+            "get": {
+                "tags": [
+                    "SellerApi"
+                ],
+                "summary": "ListPlaces",
+                "description": "Get List places",
+                "operationId": "67e5a39e1f0aef302eed58b453ace674",
+                "parameters": [
+                    {
+                        "name": "listId",
+                        "in": "path",
+                        "description": "List id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/list/{listId}/reserve": {
+            "post": {
+                "tags": [
+                    "SellerApi"
+                ],
+                "summary": "Забронировать места события",
+                "description": "Логин",
+                "operationId": "4cd69bc61778e4a61364e5126584b857",
+                "parameters": [
+                    {
+                        "name": "listId",
+                        "in": "path",
+                        "description": "List id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "places[]",
+                        "in": "query",
+                        "description": "Places",
+                        "required": true,
+                        "style": "form",
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "token": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "SellerApi",
+            "description": "SellerApi"
+        }
+    ]
+}
