@@ -1,6 +1,7 @@
 ## Разворачивание проекта
 
-- Склонировать репозиторий
+- Склонировать репозиторий **git clone https://github.com/sergey1karpov/LarApi**
+- Установить зависимости **composer install**
 - Поднять окружение **docker compose up -d**
 - Документация доступна по **[localhost/api/documentation]()**
 - Запуск теста **php artisan test**
